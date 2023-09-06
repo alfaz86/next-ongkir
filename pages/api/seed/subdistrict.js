@@ -5,10 +5,10 @@ export default async function handler(req, res) {
 
     const cities = await db('cities');
 
-    cities.forEach( async city => {
-        
-        if (city.id < 100) {
-            
+    cities.forEach(async city => {
+
+        if (city.id > 0 && city.id <= 600) {
+
             const response = await fetch(process.env.API_URL + '/api/subdistrict?city=' + city.id, {
                 method: 'GET',
                 headers: {
@@ -16,11 +16,11 @@ export default async function handler(req, res) {
                     key: process.env.API_KEY
                 },
             })
-        
+
             const result = await response.json()
-        
+
             const data = result.rajaongkir.results
-        
+
             data.forEach(async row => {
                 const subdistrict = await db('subdistricts').where({ id: row.subdistrict_id }).first();
                 if (!subdistrict) {
@@ -41,9 +41,9 @@ export default async function handler(req, res) {
                         })
                 }
             });
-            
+
         }
-        
+
     });
 
     res.status(200).json({

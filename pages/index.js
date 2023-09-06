@@ -281,7 +281,7 @@ export default function Home(props) {
                         { isLoading && (
                             <>
                                 <div className="text-black font-bold px-4 py-2">
-                                    <svg viewBox="-25 -25 100 100" preserveAspectRatio>
+                                    <svg viewBox="-25 -25 100 100" preserveAspectRatio="none meet">
                                         <circle fill="#000" stroke="none" cx="6" cy="25" r="6">
                                             <animateTransform
                                                 attributeName="transform"

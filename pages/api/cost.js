@@ -6,11 +6,11 @@ export default async function handler(req, res) {
     const { origin, originType, destination, destinationType, weight, courier } = req.body;
 
     const data = {
-        origin, 
-        originType, 
-        destination, 
-        destinationType, 
-        weight, 
+        origin,
+        originType,
+        destination,
+        destinationType,
+        weight,
         courier
     }
 
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            key: '6e959447893a850b5402628a2221fdbf'
+            key: process.env.API_KEY
         },
         body: JSON.stringify(data),
     })
